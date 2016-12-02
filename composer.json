@@ -16,7 +16,6 @@
     "require": {
     },
     "autoload": {
-        "psr-0": {
-        }
+        "files": ["MongoClient.php"]
     }
 }
