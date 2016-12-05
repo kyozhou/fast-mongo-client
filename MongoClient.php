@@ -8,11 +8,10 @@ class MongoClient {
 
     static function getInstance($connection, $dbName) {
         $key = md5($connection . $dbName);
-        if(isset(self::$mongos[$key])) {
-            return self::$mongos[$key];
-        }else {
+        if(!isset(self::$mongos[$key])) {
             self::$mongos[$key] = new MongoClient($connection, $dbName);
         }
+        return self::$mongos[$key];
     }
 
     function __construct($connection, $dbName) {
