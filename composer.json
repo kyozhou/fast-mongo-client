@@ -1,5 +1,5 @@
 {
-    "name": "kyozhou/fast-mongo-client",
+    "name": "kyoz/fast-mongo-client",
     "type": "library",
     "description": "Mongo Client For PHP 7",
     "keywords": ["mongo-client","mongo","singleton"],
