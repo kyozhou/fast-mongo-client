@@ -27,6 +27,17 @@ class MongoClient {
         return $result;
     }
 
+    function insertMulti($coll, $dataList) {
+        $bulk = new \MongoDB\Driver\BulkWrite();
+        if(!empty($dataList)) {
+            foreach($dataList as $data) {
+                $bulk->insert($data);
+            }
+        }
+        $result = $this->manager->executeBulkWrite($this->dbName . "." . $coll, $bulk);
+        return $result;
+    }
+
     function update($coll, $newData, $filters) {
         $bulk = new \MongoDB\Driver\BulkWrite();
         $bulk->update($filters, $newData, ['multi' => false]);
