@@ -64,6 +64,12 @@ class MongoClient {
         return empty($result[0]) ? [] : $result[0];
     }
 
+    function executeCommand($option) {
+        $command = new \MongoDB\Driver\Command($option);
+        $cursor = $this->manager->executeCommand($this->dbName, $command);
+        return $cursor->toArray();
+    }
+
     function obj2json($obj) {
         return empty($obj) ? [] : json_decode(json_encode($obj), true);
     }
